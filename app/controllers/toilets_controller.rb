@@ -5,6 +5,7 @@ class ToiletsController < ApplicationController
   end
 
   def show
+    @toilet = Toilet.find(params[:id])
   end
 
   def new
