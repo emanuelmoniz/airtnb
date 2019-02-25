@@ -29,7 +29,11 @@ class ToiletsController < ApplicationController
   end
 
   def update
-    @toilet.update(toilet_params)
+    if @toilet.update(toilet_params)
+      redirect_to @toilet
+    else
+      render :edit
+    end
   end
 
   def destroy
