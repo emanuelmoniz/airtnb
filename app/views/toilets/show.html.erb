@@ -7,3 +7,7 @@
 <p> Owner first Name: <%= @toilet.user.first_name %></p>
 
 <p> Owner last Name:<%= @toilet.user.last_name %></p>
+
+<%= cl_image_tag @toilet.photo, height: 300, width: 400, crop: :fill %>
+
+

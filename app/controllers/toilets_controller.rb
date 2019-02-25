@@ -3,10 +3,10 @@ class ToiletsController < ApplicationController
   before_action :set_toilet, only: [:show, :edit, :update, :destroy]
 
   def index
+    @toilets = Toilet.all
   end
 
   def show
-    @toilet = Toilet.find(params[:id])
   end
 
   def new
@@ -14,9 +14,15 @@ class ToiletsController < ApplicationController
   end
 
   def create
-    toilet = Toilet.new(toilet_params)
-    toilet.user = current_user
-    toilet.save
+    @toilet = Toilet.new(toilet_params)
+    @toilet.available = params[:toilet][:available] == "1"
+    @toilet.user = current_user
+    @toilet.save
+    if @toilet.save
+      redirect_to @toilet
+    else
+      render :new
+    end
   end
 
   def edit
@@ -37,6 +43,6 @@ class ToiletsController < ApplicationController
   end
 
   def toilet_params
-    params.require(:toilet).permit(:name, :description, :photo, :address, :available)
+    params.require(:toilet).permit(:name, :description, :photo, :address)
   end
 end
