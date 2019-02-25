@@ -14,6 +14,7 @@ class ToiletsController < ApplicationController
 
   def create
     toilet = Toilet.new(toilet_params)
+    toilet.user = current_user
     toilet.save
   end
 
@@ -35,6 +36,6 @@ class ToiletsController < ApplicationController
   end
 
   def toilet_params
-    params.require(:toilet).permit(:name, :description, :photo, :address, :available, :user)
+    params.require(:toilet).permit(:name, :description, :photo, :address, :available)
   end
 end
