@@ -1,2 +1,9 @@
-<h1>Toilets#show</h1>
-<p>Find me in app/views/toilets/show.html.erb</p>
+<h1><%= @toilet.name %></h1>
+
+<h3>description: <%= @toilet.description %></h3>
+
+<p> address: <%= @toilet.address %></p>
+
+<p> Owner first Name: <%= @toilet.user.first_name %></p>
+
+<p> Owner last Name:<%= @toilet.user.last_name %></p>
