@@ -34,8 +34,9 @@ class ToiletsController < ApplicationController
 
   def update
     @toilet.update(toilet_params)
+    @toilet.update(available: params[:toilet][:available] == "1")
     authorize @toilet
-    if @toilet.update(toilet_params)
+    if @toilet.update(toilet_params) || @toilet.update(available: params[:toilet][:available] == "1")
       redirect_to @toilet
     else
       render :edit
