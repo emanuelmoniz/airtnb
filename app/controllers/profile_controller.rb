@@ -5,3 +5,4 @@ class ProfileController < ApplicationController
     authorize @user
   end
 end
+
