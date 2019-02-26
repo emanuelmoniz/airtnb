@@ -1,28 +1,34 @@
-<div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner-toilet1.jpg' %>);">
-  <div class="container">
-    <h1>Book a Toilet <strong>anywhere</strong> and <strong>anytime</strong>!</h1>
-    <p>When you need to go you need to GO!</p>
-    <a class="btn btn-primary" href="<%= new_user_registration_path %>">Signup Now</a>
+<% if !user_signed_in? %>
+  <div class="banner-home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= asset_path 'banner-toilet1.jpg' %>);">
+    <div class="container">
+      <h1>Book a Toilet <strong>anywhere</strong> and <strong>anytime</strong>!</h1>
+      <p>When you need to go you need to GO!</p>
+      <a class="btn btn-primary" href="<%= new_user_registration_path %>">Signup Now</a>
+    </div>
   </div>
-</div>
+  <div class="banner-home-height">
+  </div>
+<% end %>
+<% if user_signed_in? %>
+  <div class="banner-filter-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'banner-filter1.jpg' %>)">
+    All Available Toilets
+  </div>
+<% end %>
 <div class="list-toilets">
   <% @toilets.each do |toilet| %>
     <div class="card-toilet-container col-xs-6 col-sm-4 col-md-3">
-      <div class="card-toilet">
-        <%= cl_image_tag toilet.photo %>
-        <div class="card-toilet-infos">
-          <div>
-            <h2><%= toilet.name %></h2>
-            <p><%= toilet.user.first_name %></p>
+      <a class="card-toilet-link" href="<%= toilet_path(toilet) %>">
+        <div class="card-toilet">
+          <%= cl_image_tag toilet.photo %>
+          <div class="card-toilet-infos">
+            <div>
+              <h2><%= toilet.name %></h2>
+              <p><%= toilet.user.first_name %></p>
+            </div>
+            <h2 class="card-toilet-pricing"><%= toilet.price %>€</h2>
           </div>
-          <h2 class="card-toilet-pricing"><%= toilet.price %>€</h2>
         </div>
-      </div>
+      </a>
     </div>
   <% end %>
 </div>
-
-
-<% if user_signed_in? %>
-  <%= link_to "New Toilet", new_toilet_path %>
-<% end %>

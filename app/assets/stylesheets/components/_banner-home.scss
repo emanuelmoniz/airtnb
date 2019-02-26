@@ -27,3 +27,7 @@
 .banner-home .container {
   text-align: center;
 }
+.banner-home-height{
+  min-height: calc(100vh - 70px);
+  z-index: -1;
+}
