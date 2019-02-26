@@ -1,0 +1,32 @@
+<h1> Profile of <%= @user.first_name + " " + @user.last_name %></h1>
+
+<h2>
+  Your Toilets:
+</h2>
+<h4><%= link_to new_toilet_path do  %>
+    <span>Add a toilet </span><i class="fas fa-plus"></i>
+  <%end %></h4>
+<% @toilets.each do |toilet| %>
+  <div class="card-toilet-container col-xs-6 col-sm-4 col-md-3">
+    <div class="card-toilet">
+      <%= cl_image_tag toilet.photo %>
+      <div class="card-toilet-infos">
+        <div>
+          <%= link_to toilet_path(toilet) do %>
+            <h2><%= toilet.name %></h2>
+          <% end %>
+          <%= link_to edit_toilet_path(toilet) do %>
+            <i class="fas fa-pencil-alt"></i>
+          <%end %>
+          <%= link_to toilet_path(toilet), method: :delete do %>
+            <i class="far fa-trash-alt"></i>
+          <%end %>
+          <p><%= toilet.user.first_name %></p>
+        </div>
+        <h2 class="card-toilet-pricing"><%= toilet.price %>€</h2>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
