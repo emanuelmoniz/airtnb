@@ -1,0 +1,51 @@
+.toilet-container {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 30px 0px 0px 0px;
+  display: flex;
+}
+
+.toilet-image {
+  padding: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.toilet-info {
+  padding: 30px;
+  position: relative;
+}
+
+.toilet-price {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.toilet-price p {
+  margin: 0;
+  font-size: 30px;
+}
+
+.toilet-name h1{
+  margin-bottom: -3px;
+}
+
+.toilet-address h4{
+  margin-bottom: 3px;
+}
+
+p {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+@media (max-width: 768px) {
+  .toilet-container {
+    display: block;
+  }
+  .toilet-image {
+    height: 350px;
+  }
+}
