@@ -1,0 +1,43 @@
+.card-review {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  background: white;
+  padding: 8px 16px;
+  border: 1px solid rgb(235,235,235);
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
+.card-review .card-review-content {
+  flex-grow: 1;
+  padding: 0 24px;
+}
+
+.card-review p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-review small {
+  color: #999999;
+  font-weight: bold;
+}
+.card-review .card-review-actions {
+  opacity: 0;
+  display: flex;
+  transition: ease .3s;
+}
+
+.card-review:hover .card-review-actions {
+  opacity: 1;
+}
+
+.card-review .card-review-actions a {
+  color: #999999;
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+.card-review .card-review-actions a:hover {
+  color: #555555;
+}
