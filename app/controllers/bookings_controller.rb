@@ -6,5 +6,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.save
     redirect_to toilet_path
+    authorize @booking
   end
 end
