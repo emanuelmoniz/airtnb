@@ -9,6 +9,11 @@
   <div class="banner-home-height">
   </div>
 <% end %>
+<% if user_signed_in? %>
+  <div class="banner-filter-home" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path 'banner-filter1.jpg' %>)">
+    All Available Toilets
+  </div>
+<% end %>
 <div class="list-toilets">
   <% @toilets.each do |toilet| %>
     <div class="card-toilet-container col-xs-6 col-sm-4 col-md-3">
