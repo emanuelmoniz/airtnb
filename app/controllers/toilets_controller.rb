@@ -1,9 +1,13 @@
 class ToiletsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_toilet, only: [:show, :edit, :update, :destroy]
 
   def index
-    @toilets = policy_scope(Toilet).where(available:true)
+    if current_user.nil?
+      @toilets = policy_scope(Toilet).where(available:true)
+    else
+      @toilets = policy_scope(Toilet).where(available:true).where.not(user_id: current_user.id)
+    end
   end
 
   def show
@@ -34,8 +38,9 @@ class ToiletsController < ApplicationController
 
   def update
     @toilet.update(toilet_params)
+    @toilet.update(available: params[:toilet][:available] == "1")
     authorize @toilet
-    if @toilet.update(toilet_params)
+    if @toilet.update(toilet_params) || @toilet.update(available: params[:toilet][:available] == "1")
       redirect_to @toilet
     else
       render :edit
