@@ -1,16 +1,28 @@
-<h1><%= @toilet.name %></h1>
 
-<h3>description: <%= @toilet.description %></h3>
 
-<p> address: <%= @toilet.address %></p>
-
-<p> Owner first Name: <%= @toilet.user.first_name %></p>
-
-<p> Owner last Name:<%= @toilet.user.last_name %></p>
-
-<p> Price:<%= @toilet.price %></p>
-
-<%= cl_image_tag @toilet.photo, height: 300, width: 400, crop: :fill %>
+<div class='toilet-container'>
+  <div class="toilet-info col-xs-12 col-sm-6">
+    <div class="toilet-name">
+      <h1><%= @toilet.name %></h1>
+    </div>
+    <div class="toilet-owner text-muted">
+      <h4><%= @toilet.user.first_name %></h4>
+    </div>
+    <div class="toilet-description">
+      <p><%= @toilet.description %></p>
+    </div>
+    <div class="toilet-address">
+      <h4 class="text-muted">Address:</h4>
+      <p><%= @toilet.address %></p>
+    </div>
+    <a class="btn btn-primary" href="#">Action</a>
+    <div class="toilet-price text-muted">
+      <p><%= @toilet.price %>€</p>
+    </div>
+  </div>
+  <div class="toilet-image col-xs-12 col-sm-6" style="background-image: url(<%= cl_image_path @toilet.photo %>);">
+  </div>
+</div>
 
 <div class="reviews-list">
   <div class="card-review">
