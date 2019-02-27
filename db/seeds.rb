@@ -25,7 +25,7 @@ users = User.all
 i = 0
 #some users own toilets
 3.times do
-  toilet = Toilet.new(name: Faker::Lorem.word, description: Faker::Lorem.sentence(3), address: Faker::Address.full_address, available: Faker::Boolean.boolean)
+  toilet = Toilet.new(name: Faker::Lorem.word, description: Faker::Lorem.sentence(3), address: Faker::Address.full_address, available: true)
   toilet.user = users[i]
   toilet.remote_photo_url = toilet_placeholder_url
   toilet.save
