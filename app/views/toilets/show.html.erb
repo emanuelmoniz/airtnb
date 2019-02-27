@@ -15,7 +15,13 @@
       <h4 class="text-muted">Address:</h4>
       <p><%= @toilet.address %></p>
     </div>
-    <a class="btn btn-primary" href="#">Action</a>
+    <% if current_user == @toilet.user %>
+        <a href="<%= edit_toilet_path %>"><i class="fas fa-pencil-alt"></i></a>
+        <%elsif @toilet.available %>
+        <a class="btn btn-primary" href="<%= toilet_bookings_path(@toilet) %>">Book</a>
+        <% else %>
+        <a class="btn btn-danger" href="<%= @toilet %>">Not Available!</a>
+    <% end %>
     <div class="toilet-price text-muted">
       <p><%= @toilet.price %>€</p>
     </div>
