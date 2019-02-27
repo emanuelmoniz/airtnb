@@ -1,8 +1,8 @@
 require 'faker'
 
+Booking.destroy_all
 User.destroy_all
 Toilet.destroy_all
-Booking.destroy_all
 # Review.destroy_all
 
 users = []
