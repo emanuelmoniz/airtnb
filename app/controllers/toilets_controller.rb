@@ -15,7 +15,7 @@ class ToiletsController < ApplicationController
     @bookings = policy_scope(Booking).order(created_at: :asc)
 
     @bookings.each do |booking|
-      booking.toilet.update(available: true) if Time.now - booking.created_at > 100000000000000000
+      booking.toilet.update(available: true) if Time.now - booking.created_at > 10
     end
   end
 
