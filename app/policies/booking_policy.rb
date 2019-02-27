@@ -3,6 +3,10 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    record.user == user
+  end
+
   class Scope < Scope
     def resolve
       scope.all
