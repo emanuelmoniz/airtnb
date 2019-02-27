@@ -4,19 +4,16 @@ class ToiletsController < ApplicationController
 
   def index
     if current_user.nil?
-      @toilets = policy_scope(Toilet).where(available:true)
+      @toilets = policy_scope(Toilet).where(available: true)
     else
-      @toilets = policy_scope(Toilet).where(available:true).where.not(user_id: current_user.id)
+      @toilets = policy_scope(Toilet).where(available: true).where.not(user_id: current_user.id)
     end
   end
 
   def show
+    @booking = Booking.find(params[:booking].to_i) unless params[:booking].nil?
+    authorize @booking unless params[:booking].nil?
     authorize @toilet
-    @bookings = policy_scope(Booking).order(created_at: :asc)
-
-    @bookings.each do |booking|
-      booking.toilet.update(available: true) if Time.now - booking.created_at > 10
-    end
   end
 
   def new
@@ -55,6 +52,7 @@ class ToiletsController < ApplicationController
   def destroy
     @toilet.destroy
     authorize @toilet
+    redirect_to toilets_path
   end
 
   private
