@@ -1,0 +1,14 @@
+<div class="card-user">
+  <div class="card-user-content">
+    <h2><%= @user.first_name + "'s Used Toilets" %></h2>
+  </div>
+</div>
+<div class="list-toilets">
+  <% if @used_toilets.empty? %>
+    <h4>You never book a toilet. Feel free to book one <a href="<%= root_path %>">here</a></h4>
+  <% else %>
+    <% @used_toilets.each do |toilet| %>
+      <%= render 'shared/toilet-card', toilet: toilet %>
+    <% end %>
+  <% end %>
+</div>
