@@ -4,18 +4,24 @@
       <h1><%= @toilet.name %></h1>
     </div>
     <div class="toilet-owner text-muted">
-      <h4><%= @toilet.user.first_name %></h4>
+      <p><%= @toilet.user.first_name %></p>
     </div>
     <div class="toilet-description">
       <p><%= @toilet.description %></p>
     </div>
     <div class="toilet-address">
-      <h4 class="text-muted">Address:</h4>
+      <p class="text-muted">Address:</p>
       <p><%= @toilet.address %></p>
     </div>
     <a class="btn btn-primary" href="#">Action</a>
     <div class="toilet-price text-muted">
       <p><%= @toilet.price %>€</p>
+    </div>
+    <div class="toilet-actions">
+      <a href="<%= edit_toilet_path %>"><i class="fas fa-pencil-alt"></i></a>
+      <%= link_to toilet_path, method: :delete do %>
+        <i class="far fa-trash-alt"></i>
+      <% end %>
     </div>
   </div>
   <div class="toilet-image col-xs-12 col-sm-6" style="background-image: url(<%= cl_image_path @toilet.photo %>);">
