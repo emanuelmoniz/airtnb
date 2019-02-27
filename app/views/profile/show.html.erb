@@ -1,13 +1,40 @@
-<h1> Profile of <%= @user.first_name + " " + @user.last_name %></h1>
+<div class="card-user">
+  <img src='<%= cl_image_path @user.photo %>' class="avatar-large"/>
+  <div class="card-user-content">
+    <h2><%= @user.first_name + " " + @user.last_name %></h2>
+  </div>
+  <div class="card-user-actions">
+    <a href="<%= edit_user_registration_path %>"><i class="fas fa-pencil-alt"></i></a>
+  </div>
+</div>
 
-<h2>
-  Your Toilets:
-</h2>
-<h4><%= link_to new_toilet_path do  %>
-    <span>Add a toilet </span><i class="fas fa-plus"></i>
-  <%end %></h4>
-  <% @toilets.each do |toilet| %>
-    <%= render 'shared/toilet-card', toilet: toilet%>
+<div class="card-white">
+  <h4 class="card-white-content">Your Toilets </h4>
+  <h4 calss="card-white-content">
+    <%= link_to new_toilet_path do  %>
+      <i class="fas fa-plus"></i>
+    <%end %>
+  </h4>
+</div>
+<div class="list-toilets">
+  <% if @my_toilets.empty? %>
+    <h4>You don't have any toilets for rent. Feel free to add one <a href="<%= new_toilet_path %>">here</a></h4>
+  <% else %>
+    <% @my_toilets[0..3].each do |toilet| %>
+      <%= render 'shared/toilet-card', toilet: toilet %>
+    <% end %>
   <% end %>
+</div>
 
-
+<div class="card-white">
+  <h4 class="card-white-content">Your Last Bookings </h4>
+</div>
+<div class="list-toilets">
+  <% if @used_toilets.empty? %>
+    <h4>You never book a toilet. Feel free to book one <a href="<%= root_path %>">here</a></h4>
+  <% else %>
+    <% @used_toilets.last(4).each do |toilet| %>
+      <%= render 'shared/toilet-card', toilet: toilet %>
+    <% end %>
+  <% end %>
+</div>
