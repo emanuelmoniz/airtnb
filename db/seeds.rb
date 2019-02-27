@@ -21,7 +21,6 @@ i = 0
   puts user
 end
 
-users = User.all
 i = 0
 #some users own toilets
 3.times do
