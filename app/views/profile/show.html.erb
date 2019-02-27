@@ -1,13 +1,21 @@
 <h1> Profile of <%= @user.first_name + " " + @user.last_name %></h1>
 
-<h2>
-  Your Toilets:
-</h2>
-<h4><%= link_to new_toilet_path do  %>
-    <span>Add a toilet </span><i class="fas fa-plus"></i>
-  <%end %></h4>
-  <% @toilets.each do |toilet| %>
-    <%= render 'shared/toilet-card', toilet: toilet%>
+<h3>Your Toilets </h3>
+<h4>
+  <%= link_to new_toilet_path do  %>
+    <i class="fas fa-plus"></i>
+  <%end %>
+</h4>
+
+<div class="list-toilets">
+  <% @my_toilets[0..3].each do |toilet| %>
+    <%= render 'shared/toilet-card', toilet: toilet %>
   <% end %>
+</div>
 
-
+<h3>Past Bookings </h3>
+<div class="list-toilets">
+  <% @used_toilets.last(4).each do |toilet| %>
+    <%= render 'shared/toilet-card', toilet: toilet %>
+  <% end %>
+</div>

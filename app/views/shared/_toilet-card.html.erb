@@ -1,14 +1,13 @@
-    <div class="card-toilet-container col-xs-6 col-sm-4 col-md-3">
-      <a class="card-toilet-link" href="<%= toilet_path(toilet) %>">
-        <div class="card-toilet">
-          <%= cl_image_tag toilet.photo %>
-          <div class="card-toilet-infos">
-            <div>
-              <h2><%= toilet.name %></h2>
-              <p><%= toilet.user.first_name %></p>
-            </div>
-            <h2 class="card-toilet-pricing"><%= toilet.price %>€</h2>
-          </div>
-        </div>
-      </a>
+<div class="card-toilet-container col-xs-6 col-sm-4 col-md-3">
+  <div class="card-toilet">
+    <a class="card-toilet-link" href="<%= toilet_path(toilet) %>"></a>
+    <%= cl_image_tag toilet.photo %>
+    <div class="card-toilet-infos">
+      <div>
+        <h2><%= toilet.name %></h2>
+        <p><%= toilet.user.first_name %></p>
+      </div>
+      <h2 class="card-toilet-pricing"><%= toilet.price %>€</h2>
     </div>
+  </div>
+</div>
