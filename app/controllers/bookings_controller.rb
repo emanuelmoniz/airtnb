@@ -17,6 +17,9 @@ class BookingsController < ApplicationController
     authorize @user
     authorize @toilet
     authorize @booking
-  end
+    @bookings = policy_scope(Booking).order(created_at: :asc)
 
+    @booking.toilet.update(available: true) if Time.now - @booking.created_at > 1000000000000000000000
+
+  end
 end
