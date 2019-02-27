@@ -16,7 +16,7 @@
     <%end %>
   </h4>
 </div>
-<div class="list-toilets">
+<div class="list-toilets-profile">
   <% if @my_toilets.empty? %>
     <h4>You don't have any toilets for rent. Feel free to add one <a href="<%= new_toilet_path %>">here</a></h4>
   <% else %>
@@ -29,7 +29,7 @@
 <div class="card-white">
   <h4 class="card-white-content">Your Last Bookings </h4>
 </div>
-<div class="list-toilets">
+<div class="list-toilets-profile">
   <% if @used_toilets.empty? %>
     <h4>You never book a toilet. Feel free to book one <a href="<%= root_path %>">here</a></h4>
   <% else %>
