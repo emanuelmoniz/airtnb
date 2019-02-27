@@ -37,12 +37,23 @@
 .navbar-wagon-item {
   cursor: pointer;
   padding: 0 20px;
+  text-decoration: none;
+}
+
+.navbar-wagon-item:visited {
+  color: black;
+  text-decoration: none;
 }
 
 /* Navbar link */
 .navbar-wagon-link {
   color: #616668;
   font-size: 14px;
+}
+.navbar-wagon-link :visited{
+  color: green;
+  font-size: 14px;
+
 }
 .navbar-wagon-link:hover {
   color: #da552f;
