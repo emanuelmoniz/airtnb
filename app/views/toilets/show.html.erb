@@ -35,6 +35,15 @@
   </div>
 </div>
 
+<% unless @mark_map.first[:lat].nil? %>
+  <div
+    id="map"
+    style="width: 100%;
+    height: 600px;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
+  ></div>
+<% end %>
 <div class="reviews-list row">
   <div class="card-review">
     <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
