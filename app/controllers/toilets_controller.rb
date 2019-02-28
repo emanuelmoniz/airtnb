@@ -11,6 +11,13 @@ class ToiletsController < ApplicationController
   end
 
   def show
+    @reviews = []
+    bookings = @toilet.bookings
+    bookings.each do |booking|
+      Review.where(booking_id: booking).each do |review|
+        @reviews << review unless @toilet.user == user
+      end
+    end
     @booking = Booking.find(params[:booking].to_i) unless params[:booking].nil?
     authorize @booking unless params[:booking].nil?
     authorize @toilet
