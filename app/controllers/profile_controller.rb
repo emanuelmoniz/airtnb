@@ -21,6 +21,10 @@ class ProfileController < ApplicationController
     authorize @user
   end
 
+  def my_reviews
+    authorize @user
+  end
+
   private
 
   def set_user

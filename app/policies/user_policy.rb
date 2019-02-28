@@ -10,4 +10,8 @@ class UserPolicy < ApplicationPolicy
   def used_toilets?
     true
   end
+
+  def my_reviews?
+    true
+  end
 end
