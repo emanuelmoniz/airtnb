@@ -8,8 +8,8 @@ Toilet.destroy_all
 users = []
 toilets = []
 bookings = []
-toilet_placeholder_url = "https://res.cloudinary.com/bubs/image/upload/v1551224698/toilet_placeholder.png"
-avatar_placeholder_url = "https://res.cloudinary.com/bubs/image/upload/v1551224698/avatar_placeholder.png"
+toilet_placeholder_url = "https://loremflickr.com/1000/1000/toilets"
+avatar_placeholder_url = "https://loremflickr.com/320/240/face"
 i = 0
 #create users
 6.times do
@@ -24,7 +24,7 @@ end
 i = 0
 #some users own toilets
 3.times do
-  toilet = Toilet.new(name: Faker::Lorem.word, description: Faker::Lorem.sentence(3), price: 15, address: Faker::Address.full_address, available: true)
+  toilet = Toilet.new(name: Faker::Lorem.word, description: Faker::Lorem.sentence(3), price: 15, address: Faker::Address.city, available: true)
   toilet.user = users[i]
   toilet.remote_photo_url = toilet_placeholder_url
   toilet.save
@@ -46,7 +46,7 @@ i = 0
   puts booking
 end
 
-# #some users add reviewa
+# #some users add review
 # 4.times do
 #   review = Review.new(content: Faker::Vehicle.standard_specs)
 #   review.booking = bookings.sample
