@@ -44,17 +44,15 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
 <% end %>
-<div class="reviews-list row">
-  <div class="card-review">
-    <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
-    <div class="card-review-content">
-      <p><small>14th January</small></p>
-      <p>Lorem ipsum dolor sit amet, <strong>consectetur</strong> adipisicing elit.</p>
-    </div>
 
-    <div class="card-review-actions">
-      <a href="#">Edit <i class="fas fa-pencil-alt"></i></a>
-      <a href="#">Delete <i class="far fa-trash-alt"></i></a>
+<div class="reviews-list">
+  <% @reviews.each do |review| %>
+  <div class="card-review">
+    <img src='<%= cl_image_path review.user.photo %>' class="avatar-large"/>
+    <div class="card-review-content">
+      <p><small><%= review.created_at %></small></p>
+      <p><%= review.content %></p>
     </div>
   </div>
+  <% end %>
 </div>
