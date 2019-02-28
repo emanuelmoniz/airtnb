@@ -1,7 +1,7 @@
 class ToiletsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_toilet, only: [:show, :edit, :update, :destroy]
-  layout 'map' , only: [:show]
+  layout 'map', only: [:index, :show]
 
   def index
     if current_user.nil?
@@ -9,9 +9,9 @@ class ToiletsController < ApplicationController
     else
       @toilets = policy_scope(Toilet).where(available:true).where.not(user_id: current_user.id)
     end
-    @toilets = Toilet.where.not(latitude: nil, longitude: nil)
+    toilets_map = Toilet.where.not(latitude: nil, longitude: nil)
 
-    @markers = @toilets.map do |toilet|
+    @markers = toilets_map.map do |toilet|
       {
         lng: toilet.longitude,
         lat: toilet.latitude
@@ -21,6 +21,14 @@ class ToiletsController < ApplicationController
 
   def show
     authorize @toilet
+    @mark_map = [{ lng: @toilet.longitude, lat: @toilet.longitude }]
+    toilets_map = Toilet.where.not(latitude: nil, longitude: nil)
+    @markers = toilets_map.map do |toilet|
+      {
+        lng: @toilet.longitude,
+        lat: @toilet.latitude
+      }
+    end
   end
 
   def new
@@ -68,6 +76,6 @@ class ToiletsController < ApplicationController
   end
 
   def toilet_params
-    params.require(:toilet).permit(:name, :description, :photo, :address, :price)
+    params.require(:toilet).permit(:name, :description, :photo, :address, :price, :latitude, :longitude)
   end
 end
