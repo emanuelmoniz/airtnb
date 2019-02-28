@@ -9,7 +9,7 @@
 </div>
 
 <div class="card-white">
-  <h4 class="card-white-content">Your Toilets </h4>
+    <h4 class="card-white-content">Your Toilets </h4>
   <h4 calss="card-white-content">
     <%= link_to new_toilet_path do  %>
       <i class="fas fa-plus"></i>
@@ -26,6 +26,12 @@
   <% end %>
 </div>
 
+<% if @my_toilets.count > 4 %>
+  <div class="more-toilets">
+    <a href="profile/my_toilets">See all my toilets</a>
+  </div>
+<%end %>
+
 <div class="card-white">
   <h4 class="card-white-content">Your Last Bookings </h4>
 </div>
@@ -38,3 +44,10 @@
     <% end %>
   <% end %>
 </div>
+
+<% if @used_toilets.count > 4 %>
+  <div class="more-toilets">
+    <a href="profile/used_toilets">See all my used toilets</a>
+  </div>
+<%end %>
+
