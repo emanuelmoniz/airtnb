@@ -8,8 +8,11 @@ Toilet.destroy_all
 users = []
 toilets = []
 bookings = []
-toilet_placeholder_url = "https://loremflickr.com/1000/1000/toilets"
-avatar_placeholder_url = "https://loremflickr.com/320/240/face"
+toilet_placeholder_url = ["https://media-cdn.tripadvisor.com/media/photo-s/01/fa/9c/43/eccentric-toilet.jpg", "http://dullkniferecords.com/wp-content/uploads/2018/05/delightful-toilet-furniture-sets-raised-toilet-seat-with-legs-and-arms-fascinating-format-funky-toilet-seats-uk.jpg", "https://www.thoughtco.com/thmb/NCWFcku0P51e5Z6603-I6jZ28W4=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/dueling-poops-59a4259f68e1a200134ae5a8.jpg", "https://imgix.ranker.com/user_node_img/50050/1000980627/original/good-ol-fashioned-nightmare-fuel-photo-u1?w=650&q=50&fm=pjpg&fit=crop&crop=faces"
+"https://images-cdn.9gag.com/photo/aMbMA7M_700b.jpg", "https://www.look4ward.co.uk/wp-content/uploads/2017/01/toilets-featured.jpg"]
+
+avatar_placeholder_url = ["https://amp.businessinsider.com/images/5899ffcf6e09a897008b5c04-750-750.jpg", "https://dcp.ufl.edu/dcp/uploads/2017/08/travis-kolbjornsen-300x300.png", "https://trendsinmenshealth.com/wp-content/uploads/sites/13/2015/07/Screen-Shot-2015-07-09-at-12.53.44.png", "https://i.pinimg.com/originals/3b/3f/2a/3b3f2afb5788fd349e70c9d5deef3841.jpg", "https://s3-media1.fl.yelpcdn.com/bphoto/CUpO9_uycCnVqYIQWDlkcQ/o.jpg", "https://i.pinimg.com/originals/ec/82/ec/ec82ece2ac38cacf38a28a7ddf4e1bec.jpg"]
+
 i = 0
 #create users
 6.times do
