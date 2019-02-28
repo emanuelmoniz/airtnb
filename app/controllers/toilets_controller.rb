@@ -1,7 +1,6 @@
 class ToiletsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_toilet, only: [:show, :edit, :update, :destroy]
-  layout 'map', only: [:index, :show]
 
   def index
     if current_user.nil?
@@ -9,7 +8,7 @@ class ToiletsController < ApplicationController
     else
       @toilets = policy_scope(Toilet).where(available: true).where.not(user_id: current_user.id)
     end
-    toilets_map = Toilet.where.not(latitude: nil, longitude: nil)
+    toilets_map = @toilets.where.not(latitude: nil, longitude: nil)
 
     @markers = toilets_map.map do |toilet|
       {

@@ -47,7 +47,7 @@
           <li><a href="<%= profile_my_toilets_path %>">My Toilets</a></li>
           <li><a href="<%= profile_used_toilets_path %>">My Bookings</a></li>
           <li><a href="<%= profile_my_reviews_path %>">My Reviews</a></li>
-          <li><a href="<%= profile_path  %>">Profile</a></li>
+          <li><a href="<%= profile_path %>">Profile</a></li>
           <li><%=link_to destroy_user_session_path, method: :delete do %>
               <i class="fa fa-sign-out"></i><%= t(".sign_out", default:"Log out") %>
               <% end %>
