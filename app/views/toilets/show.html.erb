@@ -1,21 +1,32 @@
-
-
 <div class='toilet-container'>
   <div class="toilet-info col-xs-12 col-sm-6">
     <div class="toilet-name">
       <h1><%= @toilet.name %></h1>
     </div>
     <div class="toilet-owner text-muted">
-      <h4><%= @toilet.user.first_name %></h4>
+      <p><%= @toilet.user.first_name %></p>
     </div>
     <div class="toilet-description">
       <p><%= @toilet.description %></p>
     </div>
     <div class="toilet-address">
-      <h4 class="text-muted">Address:</h4>
+      <p class="text-muted">Address:</p>
       <p><%= @toilet.address %></p>
     </div>
-    <a class="btn btn-primary" href="#">Action</a>
+    <%if !@booking.nil? && @booking.user == current_user && @booking.toilet == @toilet && @booking.toilet.available == false %>
+        <a class="btn btn-success" >Booked!</a>
+    <% else %>
+      <% if current_user == @toilet.user %>
+        <a href="<%= edit_toilet_path %>"><i class="fas fa-pencil-alt"></i></a>
+        <%= link_to toilet_path(@toilet), method: :delete do%>
+          <i class="far fa-trash-alt"></i>
+        <%end %>
+      <%elsif @toilet.available %>
+        <%= link_to "Book", toilet_bookings_path(@toilet), method: :post, class: 'btn btn-primary' %>
+      <% else %>
+        <a class="btn btn-danger" href="<%= @toilet %>">Not Available!</a>
+      <% end %>
+    <% end %>
     <div class="toilet-price text-muted">
       <p><%= @toilet.price %>€</p>
     </div>
@@ -23,8 +34,6 @@
   <div class="toilet-image col-xs-12 col-sm-6" style="background-image: url(<%= cl_image_path @toilet.photo %>);">
   </div>
 </div>
-
-
 
 <% unless @mark_map.first[:lat].nil? %>
   <div
@@ -35,10 +44,7 @@
     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
   ></div>
 <% end %>
-
-
-
-<div class="reviews-list">
+<div class="reviews-list row">
   <div class="card-review">
     <img src='https://kitt.lewagon.com/placeholder/users/arthur-littm' class="avatar-large"/>
     <div class="card-review-content">

@@ -5,9 +5,9 @@ class ToiletsController < ApplicationController
 
   def index
     if current_user.nil?
-      @toilets = policy_scope(Toilet).where(available:true)
+      @toilets = policy_scope(Toilet).where(available: true)
     else
-      @toilets = policy_scope(Toilet).where(available:true).where.not(user_id: current_user.id)
+      @toilets = policy_scope(Toilet).where(available: true).where.not(user_id: current_user.id)
     end
     toilets_map = Toilet.where.not(latitude: nil, longitude: nil)
 
@@ -20,6 +20,8 @@ class ToiletsController < ApplicationController
   end
 
   def show
+    @booking = Booking.find(params[:booking].to_i) unless params[:booking].nil?
+    authorize @booking unless params[:booking].nil?
     authorize @toilet
     @mark_map = [{ lng: @toilet.longitude, lat: @toilet.longitude }]
     toilets_map = Toilet.where.not(latitude: nil, longitude: nil)
@@ -67,6 +69,7 @@ class ToiletsController < ApplicationController
   def destroy
     @toilet.destroy
     authorize @toilet
+    redirect_to toilets_path
   end
 
   private
