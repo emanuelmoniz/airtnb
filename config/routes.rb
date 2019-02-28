@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   # resources :profile, only: [:show] do
 
   # end
-
   get 'profile', :to => 'profile#show'
   get 'profile/my_toilets', to: 'profile#my_toilets'
-  get 'profile/used_toilets', to: 'profile#used_toilets'
-
+  get 'profile/used_toilets', to: 'profile#used_toilets' 
+  
   root to: 'toilets#index'
   resources :toilets do
-    resources :bookings, only: [:create, :show]
+    resources :bookings do
+      resources :reviews, only: [:new, :create]
+    end
   end
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
