@@ -10,9 +10,9 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "My Toilets", "/profile/my_toilets", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "My Bookings", "/profile/used_toilets", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "My Reviews", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My Toilets", profile_my_toilets_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My Bookings", profile_used_toilets_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "My Reviews",  profile_my_reviews_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -44,10 +44,10 @@
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
         <% if user_signed_in? %>
-          <li><a href="#">My Toilets</a></li>
-          <li><a href="#">My Bookings</a></li>
-          <li><a href="#">My Reviews</a></li>
-          <li><a href="#">Profile</a></li>
+          <li><a href="<%= profile_my_toilets_path %>">My Toilets</a></li>
+          <li><a href="<%= profile_used_toilets_path %>">My Bookings</a></li>
+          <li><a href="<%= profile_my_reviews_path %>">My Reviews</a></li>
+          <li><a href="<%= profile_path  %>">Profile</a></li>
           <li><%=link_to destroy_user_session_path, method: :delete do %>
               <i class="fa fa-sign-out"></i><%= t(".sign_out", default:"Log out") %>
               <% end %>
