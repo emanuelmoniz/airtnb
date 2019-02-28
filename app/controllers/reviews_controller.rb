@@ -1,30 +1,36 @@
 class ReviewsController < ApplicationController
+  before_action :set_user, :set_booking, :set_toilet, only: [:new, :create]
   def new
-    @booking = Booking.find(params[:booking_id])
-    @toilet = Toilet.find(params[:toilet_id])
     @review = Review.new
+    @review.booking = @booking
     authorize @review
   end
 
   def create
     @review = Review.new(review_params)
-    @review.booking = Booking.find(params[:booking_id])
-    @review.user = current_user
-    @review.save
+    @review.booking = @booking
+    @review.user = @user
     authorize @review
-    redirect_to root
-  end
-
-  def update
-  end
-
-  def edit
-  end
-
-  def destroy
+    if @review.save
+      redirect_to @toilet
+    else
+      render :new
+    end
   end
 
   private
+
+  def set_user
+    @user = current_user
+  end
+
+  def set_toilet
+    @toilet = Toilet.find(params[:toilet_id])
+  end
+
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
+  end
 
   def review_params
     params.require(:review).permit(:content)
