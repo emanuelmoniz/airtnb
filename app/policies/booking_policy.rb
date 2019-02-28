@@ -1,5 +1,7 @@
 class BookingPolicy < ApplicationPolicy
   def create?
+    return false if record.user == record.toilet.user || record.toilet.available == false
+
     true
   end
 
