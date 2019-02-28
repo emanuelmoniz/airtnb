@@ -4,8 +4,8 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    true
-    raise
+    reviews = Review.where(booking_id: record.booking, user_id: user.id)
+    reviews.empty? && (record.booking.user == user || record.booking.toilet.user == user)
   end
 
   class Scope < Scope
