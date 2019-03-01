@@ -1,5 +1,5 @@
 class ProfileController < ApplicationController
-  before_action :set_user, :set_toilets, :set_bookings
+  before_action :set_user, :set_toilets, :set_bookings, :set_reviews
 
   def show
     my_toilets
@@ -8,13 +8,12 @@ class ProfileController < ApplicationController
   end
 
   def my_toilets
-    @my_toilets = @toilets.where(user: @user)
+    @my_toilets = @toilets.where(user_id: @user).order(created_at: :desc)
     authorize @user
-    @link = false
   end
 
   def used_toilets
-    my_bookings = @bookings.where(user_id: @user)
+    my_bookings = @bookings.where(user_id: @user).order(created_at: :desc)
     @used_toilets = []
     my_bookings.each do |booking|
       @used_toilets << @toilets.find(booking.toilet_id)
@@ -23,6 +22,7 @@ class ProfileController < ApplicationController
   end
 
   def my_reviews
+    @reviews = @reviews.where(user_id: @user).order(created_at: :desc)
     authorize @user
   end
 
@@ -38,5 +38,9 @@ class ProfileController < ApplicationController
 
   def set_bookings
     @bookings = policy_scope(Booking)
+  end
+
+  def set_reviews
+    @reviews = policy_scope(Review)
   end
 end
