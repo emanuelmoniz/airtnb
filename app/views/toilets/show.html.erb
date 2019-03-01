@@ -47,7 +47,6 @@
 
 <div class="reviews-list">
   <% @reviews.each do |review| %>
-  <% unless review.user == @toilet.user %>
     <div class="card-review">
       <img src='<%= cl_image_path review.user.photo %>' class="avatar-large"/>
       <div class="card-review-content">
@@ -56,6 +55,5 @@
         <p><%= review.user.first_name %></p>
       </div>
     </div>
-  <% end %>
   <% end %>
 </div>
