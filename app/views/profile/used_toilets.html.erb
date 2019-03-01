@@ -8,18 +8,30 @@
     <h4>You never book a toilet. Feel free to book one <a href="<%= root_path %>">here</a></h4>
   <% else %>
     <% @used_toilets.each do |toilet| %>
-      <%= render 'shared/toilet-card', toilet: toilet %>
-      <% link = false %>
-      <% unless toilet.bookings.empty? %>
-        <% toilet.bookings.each do |booking| %>
-          <% if @reviews.where(booking_id: booking, user_id: @user).empty? && !link %>
-            <div class="link-to-review">
-              <%= link_to "Missing Review", new_toilet_booking_review_path(toilet, booking), class: "btn btn-warning" %>
-            </div>
-            <% link = true %>
+      <div class="card-toilet-container col-xs-6 col-sm-4 col-md-3">
+        <% link = false %>
+        <% unless toilet.bookings.empty? %>
+          <% toilet.bookings.each do |booking| %>
+            <% if @reviews.where(booking_id: booking, user_id: @user).empty? && !link %>
+              <div class="link-to-review">
+                <%= link_to "Missing Review", new_toilet_booking_review_path(toilet, booking), class: "btn btn-warning" %>
+              </div>
+              <% link = true %>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+        <div class="card-toilet">
+          <a class="card-toilet-link" href="<%= toilet_path(toilet) %>"></a>
+          <%= cl_image_tag toilet.photo %>
+          <div class="card-toilet-infos">
+            <div>
+              <h2><%= toilet.name %></h2>
+              <p><%= toilet.user.first_name %></p>
+            </div>
+            <h2 class="card-toilet-pricing"><%= toilet.price %>€</h2>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>

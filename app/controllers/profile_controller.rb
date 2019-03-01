@@ -22,7 +22,12 @@ class ProfileController < ApplicationController
   end
 
   def my_reviews
-    @reviews = @reviews.where(user_id: @user).order(created_at: :desc)
+    @my_reviews = []
+    @bookings.where(user_id: @user).order(created_at: :desc).each do |booking|
+      @reviews.where(booking_id: booking).order(created_at: :desc).each do |review|
+        @my_reviews << review if @user != review.user
+      end
+    end
     authorize @user
   end
 
