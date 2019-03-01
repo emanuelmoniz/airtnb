@@ -1,0 +1,89 @@
+/* Colors */
+
+$dk-blue: #1E83AE;
+$blue: #3D5B94;
+$light-blue: #3DACDD;
+$red: #DE0C35;
+$social-size: 1.2em;
+$social-width: 30%;
+
+* {
+  margin: 0;
+  padding: 0;
+  @include box-sizing(border-box);
+}
+
+html, body {
+  font-family: Raleway, sans-serif;
+  background-color: #fff;
+}
+
+.footer {
+  //padding-top: 200px;
+  width: 100%;
+  display: inline-block;
+  margin: 0;
+  height: 70px;
+  background-color: white;
+  .copyright {
+    background-color: rgba(0, 0, 0, 0.1);
+    width: 50%;
+    float: left;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+    p {
+      font-weight: normal;
+      margin: 0;
+      padding-left: 10%;
+      color: black;
+      font-size: 1.3em;
+      line-height: 70px;
+      text-transform: capitalize;
+      letter-spacing: 1px;
+      @media (max-width: 600px) {
+        text-align: center;
+        padding: 0;
+      }
+    }
+  }
+  .social {
+      width: 50%;
+      float: right;
+    @media (max-width: 600px) {
+      width: 100%;
+    }
+     a {
+      float: left;
+      line-height: 70px;
+      text-decoration: none;
+      color: white;
+      text-align: center;
+      font-weight: bold;
+      @include transition(all, 0.3s);
+       &:hover {
+         background-color: black;
+         @include transition(all, .3s);
+       }
+    }
+  }
+}
+
+
+.face {
+  background-color: $blue;
+  font-size: $social-size;
+  width: $social-width;
+}
+
+.tweet {
+  background-color: $light-blue;
+  font-size: $social-size;
+  width: $social-width;
+}
+
+.support {
+  background-color: $red;
+  font-size: 0.8em;
+  width: 40%;
+}
