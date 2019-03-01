@@ -23,7 +23,7 @@ class ToiletsController < ApplicationController
     bookings = @toilet.bookings
     bookings.each do |booking|
       Review.where(booking_id: booking).each do |review|
-        @reviews << review unless @toilet.user == user
+        @reviews << review unless @toilet.user == current_user
       end
     end
     @booking = Booking.find(params[:booking].to_i) unless params[:booking].nil?

@@ -10,6 +10,7 @@ class ProfileController < ApplicationController
   def my_toilets
     @my_toilets = @toilets.where(user: @user)
     authorize @user
+    @link = false
   end
 
   def used_toilets
