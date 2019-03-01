@@ -52,6 +52,7 @@
     <div class="card-review-content">
       <p><small><%= review.created_at %></small></p>
       <p><%= review.content %></p>
+      <p><%= review.user.first_name %></p>
     </div>
   </div>
   <% end %>

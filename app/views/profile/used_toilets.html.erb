@@ -9,6 +9,17 @@
   <% else %>
     <% @used_toilets.each do |toilet| %>
       <%= render 'shared/toilet-card', toilet: toilet %>
+      <% link = false %>
+      <% unless toilet.bookings.empty? %>
+        <% toilet.bookings.each do |booking| %>
+          <% if @reviews.where(booking_id: booking, user_id: @user).empty? && !link %>
+            <div class="link-to-review">
+              <%= link_to "Missing Review", new_toilet_booking_review_path(toilet, booking), class: "btn btn-warning" %>
+            </div>
+            <% link = true %>
+          <% end %>
+        <% end %>
+      <% end %>
     <% end %>
   <% end %>
 </div>

@@ -20,7 +20,7 @@ class ToiletsController < ApplicationController
 
   def show
     @reviews = []
-    bookings = @toilet.bookings
+    bookings = @toilet.bookings.order(created_at: :desc)
     bookings.each do |booking|
       Review.where(booking_id: booking).each do |review|
         @reviews << review unless @toilet.user == current_user

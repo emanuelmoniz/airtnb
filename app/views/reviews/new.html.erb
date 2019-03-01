@@ -1,3 +1,15 @@
+<div class="card-user">
+  <div class="card-user-content">
+    <h2>
+      <% if @user == @booking.user %>
+        <%= "Review " + @booking.toilet.name + " from " + @booking.toilet.user.first_name %>
+      <% else %>
+        <%= "Review user " + @booking.user.first_name %>
+      <% end %>
+    </h2>
+  </div>
+</div>
+
 <%= simple_form_for [@toilet, @booking, @review] do |f| %>
  <%= f.input :content %>
  <%= f.submit "add a review", class: "btn btn-primary" %>
