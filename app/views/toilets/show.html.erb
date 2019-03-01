@@ -47,13 +47,15 @@
 
 <div class="reviews-list">
   <% @reviews.each do |review| %>
-  <div class="card-review">
-    <img src='<%= cl_image_path review.user.photo %>' class="avatar-large"/>
-    <div class="card-review-content">
-      <p><small><%= review.created_at %></small></p>
-      <p><%= review.content %></p>
-      <p><%= review.user.first_name %></p>
+  <% unless review.user == @toilet.user %>
+    <div class="card-review">
+      <img src='<%= cl_image_path review.user.photo %>' class="avatar-large"/>
+      <div class="card-review-content">
+        <p><small><%= review.created_at %></small></p>
+        <p><%= review.content %></p>
+        <p><%= review.user.first_name %></p>
+      </div>
     </div>
-  </div>
+  <% end %>
   <% end %>
 </div>
