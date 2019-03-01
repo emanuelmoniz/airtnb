@@ -2,6 +2,7 @@
   <div class="card-user-content">
     <h2><%= @user.first_name + "'s Used Toilets" %></h2>
   </div>
+    <%= link_to  "Book? ", root_path %>
 </div>
 <div class="list-toilets">
   <% if @used_toilets.empty? %>
