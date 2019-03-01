@@ -5,7 +5,7 @@ class ReviewPolicy < ApplicationPolicy
 
   def create?
     reviews = Review.where(booking_id: record.booking, user_id: user.id)
-    reviews.empty? && (record.booking.user == user || record.booking.toilet.user == user)
+    reviews.size < 2 && (record.booking.user == user || record.booking.toilet.user == user)
   end
 
   class Scope < Scope
