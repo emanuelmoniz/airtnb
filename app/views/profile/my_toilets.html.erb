@@ -7,8 +7,44 @@
   <% if @my_toilets.empty? %>
     <h4>You don't have any toilets for rent. Feel free to add one <a href="<%= new_toilet_path %>">here</a></h4>
   <% else %>
+    <!-- going through all my toilets -->
     <% @my_toilets.each do |toilet| %>
       <%= render 'shared/toilet-card', toilet: toilet %>
     <% end %>
   <% end %>
 </div>
+
+  <% if @my_toilets.empty? %>
+    <h4>You don't have any toilets for rent. Feel free to add one <a href="<%= new_toilet_path %>">here</a></h4>
+  <% else %>
+    <% counter = 0 %>
+    <% @my_toilets.each do |toilet| %>
+      <div class="links">
+      <!-- if this toilets does not have bookings, just stop -->
+      <% unless toilet.bookings.count == 0 %>
+        <!-- going through all the bookings of the toilet -->
+        <% toilet.bookings.each do |booking|%>
+          <!-- If the booking does not have reviews, I need the link -->
+          <% if booking.reviews.count == 0 %>
+            <!-- LINK HERE -->
+            <% if counter == 0  %>
+              <h4> Missing Reviews:</h4>
+            <% end %>
+            <%= link_to  "Do a review to #{booking.user.first_name}", new_toilet_booking_review_path(toilet, booking), class: "btn btn-warning" %>
+            <% counter = 1 %>
+          <% else %>
+            <!-- link if all the reviews of a booking where the user that did it is the same as the toilet owner -->
+            <% if booking.reviews.where(user_id: toilet.user ).count == 0 %>
+              <!-- LINK HERE -->
+              <% if counter == 0  %>
+                <h4> Missing Reviews:</h4>
+              <% end %>
+              <%= link_to  "Do a review to #{booking.user.first_name}", new_toilet_booking_review_path(toilet, booking), class: "btn btn-warning" %>
+              <% counter = 1 %>
+            <%end %>
+          <% end %>
+        <%end %>
+      <%end %>
+      </div >
+    <%end %>
+  <%end %>

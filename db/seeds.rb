@@ -1,9 +1,10 @@
 require 'faker'
 
+Review.destroy_all
 Booking.destroy_all
 User.destroy_all
 Toilet.destroy_all
-# Review.destroy_all
+
 
 users = []
 toilets = []
@@ -36,15 +37,7 @@ end
 toilets = Toilet.all
 i = 0
 #some users book toilets
-3.times do
-  booking = Booking.new()
-  booking.user = users[3 + i]
-  booking.toilet = toilets[i]
-  booking.save
-  bookings << booking
-  i += 1
-  puts booking
-end
+
 
 # #some users add reviewa
 # 4.times do
