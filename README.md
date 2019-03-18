@@ -2,13 +2,18 @@
 
 1st project in Ruby on Rails done by 4 young developers. Typical marketplace where you can book toilets and put your own toilets on the website. Booking system and review system included.
 
-(More in some days)
+You can visit it on: https://airtnb.herokuapp.com
+
+## Table of Contents
+
+* [Getting started](#getting-started)
+* [Authors](#authors)
 
 ## Getting Started
 
-1. To get this platform working on your localhost, do the following:
+#### To get this platform working on your localhost, do the following:
 
-After cloning the project:
+* After cloning the project:
 
 ```
 #TERMINAL (put the following commmands):
@@ -28,9 +33,9 @@ sidekiq
 rails s
 ```
 
-After this, you can open the app in your local server
+* After this, you can open the app in your local server: http://localhost:3000/
 
-2. If you want to see the app working without any job, you can visit: https://airtnt.herokuapp.com (feel free to sign up and add seeds :)  )
+#### If you want to see the app working without any job, you can visit: https://airtnb.herokuapp.com (feel free to sign up and add seeds :)  )
 
 
 ### Prerequisites
@@ -41,42 +46,12 @@ After this, you can open the app in your local server
 4. Ruby
 5. Rails
 
-
-
-
-
-## Still on construction from now on
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+App developed by:
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* Emanuel Moniz (https://github.com/emanuelmoniz/)
+* Romain Aubert (https://github.com/yourcontact)
+* João Costa (https://github.com/joaofrancosta)
+* Rui Magalhães (https://github.com/RuiSMagalhaes)
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
